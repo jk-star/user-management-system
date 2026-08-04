@@ -8,7 +8,7 @@
 
     <div class="text-white"><?= esc(ucfirst(session()->get('user_name'))) ?></div>
 
-    <div class="text-white d-flex">
+    <div class="text-white d-flex align-items-center">
         <a class="text-white text-decoration-none"><?= esc(ucfirst(session()->get('role'))) ?></a>
 
         <a
