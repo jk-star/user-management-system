@@ -29,5 +29,10 @@ Thumbs.db
 .vscode/
 .idea/
 
+# database
+
+app/Config/Database.php
+
+
 # Composer lock (optional)
 # composer.lock
