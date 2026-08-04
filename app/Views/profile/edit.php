@@ -10,7 +10,8 @@
 
 <form
     action="<?= site_url('profile/update') ?>"
-    method="post">
+    method="post"
+    enctype="multipart/form-data">
 
     <?= csrf_field() ?>
 

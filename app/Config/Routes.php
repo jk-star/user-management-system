@@ -64,6 +64,24 @@ $routes->group(
     }
 );
 
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+
+    $routes->get(
+        'profile',
+        'ProfileController::index'
+    );
+
+    $routes->get(
+        'profile/edit',
+        'ProfileController::edit'
+    );
+
+    $routes->post(
+        'profile/update',
+        'ProfileController::update'
+    );
+});
+
 $routes->get('login', 'AuthController::login');
 
 $routes->post('login', 'AuthController::authenticate');

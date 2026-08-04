@@ -10,7 +10,8 @@
 
 <form
     action="<?= site_url('admin/users/store') ?>"
-    method="post">
+    method="post"
+    enctype="multipart/form-data">
 
     <?= csrf_field() ?>
 

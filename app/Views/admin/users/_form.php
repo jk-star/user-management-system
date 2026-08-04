@@ -33,6 +33,32 @@
 
 </div>
 
+<div class="mb-3">
+
+    <label class="form-label">
+
+        Profile Image
+
+    </label>
+
+    <input
+        type="file"
+        name="profile_image"
+        class="form-control"
+        accept=".jpg,.jpeg,.png,.webp">
+
+    <small class="text-muted">
+
+        Allowed:
+        JPG, PNG, WEBP
+
+        Max:
+        2MB
+
+    </small>
+
+</div>
+
 
 <?php if (! isset($user)): ?>
 
