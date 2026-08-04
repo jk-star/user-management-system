@@ -14,7 +14,7 @@
     </div>
 
     <div class="text-white d-flex align-items-center">
-        <a class="text-white text-decoration-none"><?= esc(ucfirst(session()->get('role'))) ?></a>
+        <!-- <a class="text-white text-decoration-none"><?= esc(ucfirst(session()->get('role'))) ?></a> -->
 
         <a
             href="<?= site_url('logout') ?>"
