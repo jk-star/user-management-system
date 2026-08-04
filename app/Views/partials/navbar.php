@@ -6,10 +6,10 @@
         </a>
     </div>
 
-    <div class="text-white"><?= esc(session()->get('user_name')) ?></div>
+    <div class="text-white"><?= esc(ucfirst(session()->get('user_name'))) ?></div>
 
     <div class="text-white d-flex">
-        <a class="text-white text-decoration-none">Admin</a>
+        <a class="text-white text-decoration-none"><?= esc(ucfirst(session()->get('role'))) ?></a>
 
         <a
             href="<?= site_url('logout') ?>"

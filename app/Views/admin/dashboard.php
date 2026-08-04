@@ -6,7 +6,7 @@
 
 <p class="text-muted">
     Welcome,
-    <?= esc(session()->get('user_name')) ?>
+    <?= esc(ucfirst(session()->get('user_name'))) ?>
 </p>
 
 <div class="row mt-4">
