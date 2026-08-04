@@ -6,3 +6,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->get('/test', 'DatabaseTest::index');
+
+$routes->get('admin/dashboard', 'Admin\DashboardController::index');
