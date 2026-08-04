@@ -37,23 +37,11 @@ class UserController extends BaseController
 
     public function store()
     {
-        $rules = [
-            'name' => 'required|min_length[3]',
-
-            'email' =>
-            'required|valid_email|is_unique[users.email]',
-
-            'password' =>
-            'required|min_length[8]',
-
-            'role' =>
-            'required|in_list[admin,user]',
-
-            'status' =>
-            'required|in_list[active,inactive]'
+        $passwordRules = [
+            'password' => 'required|min_length[8]'
         ];
 
-        if (! $this->validate($rules)) {
+        if (! $this->validate($passwordRules)) {
 
             return redirect()
                 ->back()
@@ -64,7 +52,8 @@ class UserController extends BaseController
                 );
         }
 
-        $this->userModel->insert([
+
+        $data = [
 
             'name' =>
             $this->request->getPost('name'),
@@ -82,7 +71,20 @@ class UserController extends BaseController
 
             'status' =>
             $this->request->getPost('status')
-        ]);
+        ];
+
+
+        if (! $this->userModel->insert($data)) {
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with(
+                    'errors',
+                    $this->userModel->errors()
+                );
+        }
+
 
         return redirect()
             ->to('/admin/users')
@@ -130,36 +132,15 @@ class UserController extends BaseController
         $user = $this->userModel->find($id);
 
         if (! $user) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound(
-                'User not found'
-            );
+
+            throw \CodeIgniter\Exceptions\PageNotFoundException
+                ::forPageNotFound('User not found');
         }
 
-        $rules = [
-            'name' => 'required|min_length[3]',
 
-            'email' =>
-            "required|valid_email|is_unique[users.email,id,{$id}]",
+        $data = [
 
-            'role' =>
-            'required|in_list[admin,user]',
-
-            'status' =>
-            'required|in_list[active,inactive]'
-        ];
-
-        if (! $this->validate($rules)) {
-
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with(
-                    'errors',
-                    $this->validator->getErrors()
-                );
-        }
-
-        $this->userModel->update($id, [
+            'id' => $id,
 
             'name' =>
             $this->request->getPost('name'),
@@ -172,7 +153,20 @@ class UserController extends BaseController
 
             'status' =>
             $this->request->getPost('status')
-        ]);
+        ];
+
+
+        if (! $this->userModel->save($data)) {
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with(
+                    'errors',
+                    $this->userModel->errors()
+                );
+        }
+
 
         return redirect()
             ->to('/admin/users')

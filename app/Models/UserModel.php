@@ -35,8 +35,41 @@ class UserModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules = [
+        'name' => 'required|min_length[3]|max_length[100]',
+
+        'email' =>
+        'required|valid_email|max_length[150]|is_unique[users.email,id,{id}]',
+
+        'role' =>
+        'required|in_list[admin,user]',
+
+        'status' =>
+        'required|in_list[active,inactive]'
+    ];
+
+    protected $validationMessages = [
+
+        'name' => [
+            'required'   => 'Name is required.',
+            'min_length' => 'Name must contain at least 3 characters.'
+        ],
+
+        'email' => [
+            'required'    => 'Email is required.',
+            'valid_email' => 'Please enter a valid email.',
+            'is_unique'   => 'This email is already registered.'
+        ],
+
+        'role' => [
+            'in_list' => 'Please select a valid role.'
+        ],
+
+        'status' => [
+            'in_list' => 'Please select a valid status.'
+        ]
+    ];
+
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

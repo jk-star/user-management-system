@@ -20,8 +20,7 @@ class AuthController extends BaseController
     {
 
         $rules = [
-            'email'    => 'required|valid_email',
-            'password' => 'required'
+            'password' => 'required|min_length[8]'
         ];
 
         if (! $this->validate($rules)) {
@@ -30,8 +29,8 @@ class AuthController extends BaseController
                 ->back()
                 ->withInput()
                 ->with(
-                    'error',
-                    'Please enter valid login details.'
+                    'errors',
+                    $this->validator->getErrors()
                 );
         }
 

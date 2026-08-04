@@ -41,6 +41,8 @@
 
             <main class="col-md-10 p-4">
 
+                <?= $this->include('partials/flash') ?>
+
                 <?= $this->renderSection('content') ?>
 
             </main>
