@@ -7,7 +7,11 @@ $routes->get('/', 'Home::index');
 
 $routes->get('/test', 'DatabaseTest::index');
 
-$routes->get('admin/dashboard', 'Admin\DashboardController::index');
+$routes->get(
+    'admin/dashboard',
+    'Admin\DashboardController::index',
+    ['filter' => 'auth']
+);
 
 $routes->get('login', 'AuthController::login');
 

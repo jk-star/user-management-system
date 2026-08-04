@@ -30,10 +30,14 @@ class Filters extends BaseFilters
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,
+
+        // Missing aliases
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+
+        // Our custom filter
+        'auth'          => \App\Filters\AuthFilter::class,
     ];
 
     /**
