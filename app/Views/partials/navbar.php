@@ -6,7 +6,12 @@
         </a>
     </div>
 
-    <div class="text-white"><?= esc(ucfirst(session()->get('user_name'))) ?></div>
+    <div class="text-white">
+        <?= esc(ucfirst(session()->get('user_name'))) ?>
+        <span class="badge bg-secondary">
+            <?= esc(ucfirst(session()->get('role'))) ?>
+        </span>
+    </div>
 
     <div class="text-white d-flex align-items-center">
         <a class="text-white text-decoration-none"><?= esc(ucfirst(session()->get('role'))) ?></a>

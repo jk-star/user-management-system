@@ -12,44 +12,54 @@ $routes->group(
     ['filter' => 'auth'],
     function ($routes) {
 
+        // All logged-in users
         $routes->get(
             'dashboard',
             'Admin\DashboardController::index'
         );
 
-        $routes->get(
+
+        // Only Admin
+        $routes->group(
             'users',
-            'Admin\UserController::index'
-        );
+            ['filter' => 'admin'],
+            function ($routes) {
 
-        $routes->get(
-            'users/create',
-            'Admin\UserController::create'
-        );
+                $routes->get(
+                    '/',
+                    'Admin\UserController::index'
+                );
 
-        $routes->post(
-            'users/store',
-            'Admin\UserController::store'
-        );
+                $routes->get(
+                    'create',
+                    'Admin\UserController::create'
+                );
 
-        $routes->get(
-            'users/(:num)',
-            'Admin\UserController::show/$1'
-        );
+                $routes->post(
+                    'store',
+                    'Admin\UserController::store'
+                );
 
-        $routes->get(
-            'users/edit/(:num)',
-            'Admin\UserController::edit/$1'
-        );
+                $routes->get(
+                    '(:num)',
+                    'Admin\UserController::show/$1'
+                );
 
-        $routes->post(
-            'users/update/(:num)',
-            'Admin\UserController::update/$1'
-        );
+                $routes->get(
+                    'edit/(:num)',
+                    'Admin\UserController::edit/$1'
+                );
 
-        $routes->post(
-            'users/delete/(:num)',
-            'Admin\UserController::delete/$1'
+                $routes->post(
+                    'update/(:num)',
+                    'Admin\UserController::update/$1'
+                );
+
+                $routes->post(
+                    'delete/(:num)',
+                    'Admin\UserController::delete/$1'
+                );
+            }
         );
     }
 );

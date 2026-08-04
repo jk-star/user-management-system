@@ -1,35 +1,39 @@
-<div class="sidebar bg-light p-3">
+<ul class="nav flex-column">
 
-    <h5>Menu</h5>
+    <li class="nav-item">
 
-    <hr>
+        <a
+            class="nav-link"
+            href="<?= site_url('admin/dashboard') ?>">
+            Dashboard
+        </a>
 
-    <ul class="nav flex-column">
+    </li>
+
+
+    <?php if (session()->get('role') === 'admin'): ?>
 
         <li class="nav-item">
-            <a
-                class="nav-link"
-                href="<?= site_url('admin/dashboard') ?>">
-                Dashboard
-            </a>
-        </li>
 
-        <li class="nav-item">
             <a
                 class="nav-link"
                 href="<?= site_url('admin/users') ?>">
                 Users
             </a>
+
         </li>
 
-        <li class="nav-item">
-            <a
-                class="nav-link"
-                href="<?= site_url('profile') ?>">
-                Profile
-            </a>
-        </li>
+    <?php endif; ?>
 
-    </ul>
 
-</div>
+    <li class="nav-item">
+
+        <a
+            class="nav-link"
+            href="<?= site_url('profile') ?>">
+            Profile
+        </a>
+
+    </li>
+
+</ul>
