@@ -3,7 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
 
 $routes->get('/test', 'DatabaseTest::index');
 
@@ -82,8 +82,10 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     );
 });
 
-$routes->get('login', 'AuthController::login');
+$routes->get('/', 'AuthController::login');
 
 $routes->post('login', 'AuthController::authenticate');
 
 $routes->get('logout', 'AuthController::logout');
+
+$routes->get('tutorial/(:segment)', 'TutorialController::chapter/$1');
