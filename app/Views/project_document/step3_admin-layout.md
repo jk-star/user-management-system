@@ -117,7 +117,7 @@ Create: `app/Views/layouts/admin.php`
     &lt;/style&gt;
 &lt;/head&gt;
 
-&lt;body&gt; 
+&lt;body&gt;
     &lt;?= $this->include('partials/navbar') ?&gt;
     &lt;div class="container-fluid"&gt;
         &lt;div class="row"&gt;
@@ -144,3 +144,85 @@ Create: `app/Views/layouts/admin.php`
 ## 5. Dashboard View
 
 Create: `app/Views/admin/dashboard.php`
+<code><pre>
+&lt;?= $this->extend('layouts/admin') ?&gt;
+&lt;?= $this->section('content') ?&gt;
+&lt;h1>Dashboard&lt;/h1&gt;
+&lt;p class="text-muted"&gt;
+    Welcome to User Management System
+&lt;/p&gt;
+&lt;div class="row mt-4"&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5&gt;Total Users&lt;/h5&gt;
+                &lt;h2&gt;2&lt;/h2&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5&gt;Active Users&lt;/h5&gt;
+                &lt;h2&gt;2&lt;/h2&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5&gt;Inactive Users&lt;/h5&gt;
+                &lt;h2&gt;0&lt;/h2&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;?= $this->endSection() ?&gt;
+</pre></code>
+
+## 6. Controller Create Karo
+
+Terminal: `php spark make:controller Admin/DashboardController`
+
+File: `app/Controllers/Admin/DashboardController.php`
+
+Controller:
+<code><pre>
+&lt;?php
+namespace App\Controllers\Admin;
+use App\Controllers\BaseController;
+
+class DashboardController extends BaseController
+{
+    public function index()
+    {
+        $data = [
+            'title' => 'Dashboard'
+        ];
+
+        return view(
+            'admin/dashboard',
+            $data
+        );
+    }
+}
+</pre></code>
+
+## 7. Route Add Karo
+
+Open: `app/Config/Routes.php`
+
+Add:
+<code><pre>
+$routes->get(
+    'admin/dashboard',
+    'Admin\DashboardController::index'
+);
+
+</pre></code>
+
+## 8. Server Run
+
+`php spark serve`
+
+Open: `http://localhost:8080/admin/dashboard`
