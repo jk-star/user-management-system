@@ -67,8 +67,8 @@ $routes->group(
 $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     $routes->get(
-        'profile',
-        'ProfileController::index'
+        'profile/(:num)',
+        'ProfileController::index/$1'
     );
 
     $routes->get(
@@ -77,8 +77,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     );
 
     $routes->post(
-        'profile/update',
-        'ProfileController::update'
+        'profile/update/(:num)',
+        'ProfileController::update/$1'
     );
 });
 

@@ -9,7 +9,7 @@
 <?= $this->include('partials/validation_errors') ?>
 
 <form
-    action="<?= site_url('profile/update') ?>"
+    action="<?= site_url('profile/update/' . $user['id']) ?>"
     method="post">
 
     <?= csrf_field() ?>

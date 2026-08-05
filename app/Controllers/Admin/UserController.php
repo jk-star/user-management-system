@@ -169,7 +169,7 @@ class UserController extends BaseController
 
 
         return redirect()
-            ->to('/admin/users')
+            ->to('/admin/users/' . $id)
             ->with(
                 'success',
                 'User updated successfully.'

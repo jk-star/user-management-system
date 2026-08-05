@@ -9,7 +9,7 @@
 <?= $this->include('partials/validation_errors') ?>
 
 <form
-    action="<?= site_url('profile/update') ?>"
+    action="<?= site_url('profile/update/' . session()->get('user_id')) ?>"
     method="post"
     enctype="multipart/form-data">
 

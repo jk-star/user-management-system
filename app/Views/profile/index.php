@@ -13,9 +13,8 @@
         <div class="row">
 
             <div class="col-md-3 text-center">
-
                 <img
-                    src="<?= base_url('uploads/profiles/default.png') ?>"
+                    src="<?= base_url('uploads/profiles/' . $user['profile_image']) ?>"
                     class="img-fluid rounded-circle"
                     width="180">
 
